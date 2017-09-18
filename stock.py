@@ -5,7 +5,7 @@ from tensorflow.python.platform import gfile
 import time
 import math
 
-AIC_PATH = r"D:/project/data/20170916/ai_challenger_stock_train_20170916/"
+AIC_PATH = r"D:/project/AIchallenger/data/20170916/ai_challenger_stock_train_20170916/"
 AIC_TRAINING = AIC_PATH + "stock_train_data_20170916.csv"
 
 print(AIC_TRAINING)
@@ -73,12 +73,12 @@ def main():
     target = np.load("target.npy")
 
     hidden_size = 10
-    learning_rate = 0.01
+    learning_rate = 0.001
     class_num = 2
-    num_epochs = 2500
-    train_size = 4000
+    num_epochs = 25000
+    train_size = 5000
     test_begin = train_size+6000
-    test_size = 400
+    test_size = 10000
 
     train_data = data[0:train_size, 1:-3]
     test_data = data[test_begin:test_begin+test_size, 1:-3]
@@ -100,7 +100,7 @@ def main():
 
     cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=Y, logits=logits, name='xentropy')
     cost = tf.reduce_mean(cross_entropy, name='xentropy_mean')
-    optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(cost)
+    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 
     init = tf.global_variables_initializer()
 
@@ -111,14 +111,15 @@ def main():
             start_time = time.time()
             _, loss_value = sess.run([optimizer, cost], feed_dict={X: train_data, Y: train_labels})
             duration = time.time() - start_time
+            # print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
 
             # Print the cost every epoch
-            if epoch % 100 == 0:
-                print('Step %d: loss = %.2f (%.3f sec)' % (epoch, loss_value, duration))
+            if epoch % 1 == 0:
+                print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
                 correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(Y, 1))
                 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
                 print ("Train Accuracy:", accuracy.eval({X: train_data, Y: train_labels}))
                 loss_value = sess.run(cost, feed_dict={X: test_data, Y: test_labels})
-                print("test loss:%.2f Test Accuracy:"%(loss_value), accuracy.eval({X: test_data, Y: test_labels}))
+                print("test loss:%.8f Test Accuracy:"%(loss_value), accuracy.eval({X: test_data, Y: test_labels}))
 
 main()
