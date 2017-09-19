@@ -10,6 +10,7 @@ AIC_TRAINING = AIC_PATH + "stock_train_data_20170916.csv"
 
 print(AIC_TRAINING)
 
+
 def stack_csv_load(filename,
                    target_dtype,
                    features_dtype,
@@ -42,6 +43,7 @@ def data_save():
     np.save("data", training_set["data"])
     np.save("target", training_set["target"])
 
+
 def add_layer(inputs,
               in_size,
               out_size,
@@ -58,7 +60,32 @@ def add_layer(inputs,
     return outputs
 
 
-def one_hot_matrix(labels, C):
+def dense(x,
+          size,
+          scope):
+    return tf.contrib.layers.fully_connected(x, size,
+                                             activation_fn=None,
+                                             scope=scope)
+
+
+def dense_relu(x, size, scope):
+    with tf.variable_scope(scope):
+        h1 = dense(x, size, 'dense')
+        return tf.nn.relu(h1, 'relu')
+
+
+def dense_batch_relu(x, size, phase, scope):
+    with tf.variable_scope(scope):
+        h1 = tf.contrib.layers.fully_connected(x, size, activation_fn=None, scope='dense')
+        h2 = tf.contrib.layers.batch_norm(h1,
+                                          center=True, scale=True,
+                                          is_training=phase,
+                                          scope='bn')
+        return tf.nn.relu(h2, 'relu')
+
+
+def one_hot_matrix(labels,
+                   C):
 
     with tf.Session() as sess:
         C = tf.constant(C, name="C")
@@ -67,18 +94,19 @@ def one_hot_matrix(labels, C):
 
     return one_hot
 
+
 def main():
     # data_save()
     data = np.load("data.npy")
     target = np.load("target.npy")
 
-    hidden_size = 10
-    learning_rate = 0.001
+    hidden_size = 2
+    learning_rate = 0.01
     class_num = 2
     num_epochs = 25000
-    train_size = 5000
+    train_size = 10000
     test_begin = train_size+6000
-    test_size = 10000
+    test_size = 800
 
     train_data = data[0:train_size, 1:-3]
     test_data = data[test_begin:test_begin+test_size, 1:-3]
@@ -89,18 +117,27 @@ def main():
     print(train_data.shape, train_labels.shape)
     X = tf.placeholder(tf.float32, shape=(None, train_data.shape[1]))
     Y = tf.placeholder(tf.int32, shape=(None, class_num))
+    phase = tf.placeholder(tf.bool, name='phase')
 
     input_layer = X
-    input_size = train_data.shape[1]
-    output_size = train_data.shape[1]
-    for i in range(hidden_size):
-        input_layer = add_layer(input_layer, input_size, output_size, activation_function=tf.nn.relu)
 
-    logits = add_layer(input_layer, input_size, class_num, activation_function=None)
+    # input_size = train_data.shape[1]
+    # output_size = train_data.shape[1]
+    # for i in range(hidden_size):
+    #     input_layer = add_layer(input_layer, input_size, output_size, activation_function=tf.nn.relu)
+    #
+    # logits = add_layer(input_layer, input_size, class_num, activation_function=None)
+
+    output_size = int(train_data.shape[1]*2)
+    print(output_size)
+    for i in range(hidden_size):
+        input_layer = dense_batch_relu(input_layer, output_size, phase, "layer"+str(i+i))
+
+    logits = dense(input_layer, class_num, "layer" + str(i + i))
 
     cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=Y, logits=logits, name='xentropy')
     cost = tf.reduce_mean(cross_entropy, name='xentropy_mean')
-    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
+    optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(cost)
 
     init = tf.global_variables_initializer()
 
@@ -109,17 +146,17 @@ def main():
 
         for epoch in range(num_epochs):
             start_time = time.time()
-            _, loss_value = sess.run([optimizer, cost], feed_dict={X: train_data, Y: train_labels})
+            _, loss_value = sess.run([optimizer, cost], feed_dict={X: train_data, Y: train_labels, phase:True})
             duration = time.time() - start_time
             # print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
 
             # Print the cost every epoch
             if epoch % 1 == 0:
-                print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
+                # print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
                 correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(Y, 1))
                 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-                print ("Train Accuracy:", accuracy.eval({X: train_data, Y: train_labels}))
-                loss_value = sess.run(cost, feed_dict={X: test_data, Y: test_labels})
-                print("test loss:%.8f Test Accuracy:"%(loss_value), accuracy.eval({X: test_data, Y: test_labels}))
+                print ("train loss:%.8f Train Accuracy:"%(loss_value), accuracy.eval({X: train_data, Y: train_labels, phase:True}))
+                loss_value = sess.run(cost, feed_dict={X: test_data, Y: test_labels, phase:False})
+                print("test loss:%.8f Test Accuracy:"%(loss_value), accuracy.eval({X: test_data, Y: test_labels, phase:False}))
 
 main()
