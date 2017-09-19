@@ -89,7 +89,6 @@ def dense_batch_relu(x, size, phase, keep_prob, scope):
 
 def one_hot_matrix(labels,
                    C):
-
     with tf.Session() as sess:
         C = tf.constant(C, name="C")
         one_hot_matrix = tf.one_hot(labels, C, axis=1)
@@ -98,19 +97,12 @@ def one_hot_matrix(labels,
     return one_hot
 
 
-def main():
-    # data_save()
-    data = np.load("data.npy")
-    target = np.load("target.npy")
+def data_get_whatever(data, target):
 
-    hidden_size = 4
-    learning_rate = 0.01
-    class_num = 2
-
-    num_epochs = 2500000
-    train_size = 128000
+    train_size = 200000
     test_begin = 250000+16000
-    test_size = 16000
+    test_size = 20000
+    class_num = 2
 
     train_data = data[0:train_size, 1:-3]
     test_data = data[test_begin:test_begin+test_size, 1:-3]
@@ -119,6 +111,76 @@ def main():
     train_labels = one_hot_matrix(train_target, C=class_num)
     test_labels = one_hot_matrix(test_target, C=class_num)
     print(train_data.shape, train_labels.shape)
+    print(test_data.shape, test_labels.shape)
+
+    data_set = {"train_data":train_data,
+           "train_labels": train_labels,
+           "test_data": test_data,
+           "test_labels": test_labels}
+    return data_set
+
+
+def data_get_group(data, target, group, split):
+
+    class_num = 2
+
+    target = one_hot_matrix(target, C=class_num)
+
+    group_index = np.where(data[:, 90] == group)
+    group_data = data[group_index]
+    group_lables = target[group_index]
+
+    group_train_index = np.where(group_data[:, 91] < split)
+    group_test_index = np.where(group_data[:, 91] >= split)
+
+    train_data =group_data[group_train_index]
+    train_data = train_data[:, 1:89]
+    train_labels = group_lables[group_train_index]
+
+    test_data = group_data[group_test_index]
+    test_data = test_data[:, 1:89]
+    test_labels = group_lables[group_test_index]
+
+    print(train_data.shape, train_labels.shape)
+    print(test_data.shape, test_labels.shape)
+
+    data_set = {"train_data":train_data,
+           "train_labels": train_labels,
+           "test_data": test_data,
+           "test_labels": test_labels}
+    return data_set
+
+
+def main():
+    # data_save()
+    data = np.load("data.npy")
+    target = np.load("target.npy")
+
+    hidden_size = 4
+    learning_rate = 0.1
+    class_num = 2
+
+    num_epochs = 2500000
+    # train_size = 200000
+    # test_begin = 250000+16000
+    # test_size = 20000
+    #
+    # train_data = data[0:train_size, 1:-3]
+    # test_data = data[test_begin:test_begin+test_size, 1:-3]
+    # train_target = target[0:train_size]
+    # test_target = target[test_begin:test_begin+test_size]
+    # train_labels = one_hot_matrix(train_target, C=class_num)
+    # test_labels = one_hot_matrix(test_target, C=class_num)
+    # print(train_data.shape, train_labels.shape)
+
+    # data_set = data_get_whatever(data, target)
+    data_set = data_get_group(data, target, 1, 17)
+
+    train_data = data_set["train_data"]
+    train_labels = data_set["train_labels"]
+    test_data = data_set["test_data"]
+    test_labels = data_set["test_labels"]
+
     X = tf.placeholder(tf.float32, shape=(None, train_data.shape[1]))
     Y = tf.placeholder(tf.int32, shape=(None, class_num))
     phase = tf.placeholder(tf.bool, name='phase')
@@ -152,20 +214,22 @@ def main():
         for epoch in range(num_epochs):
             start_time = time.time()
             _, loss_value = sess.run([optimizer, cost], feed_dict={X: train_data, Y: train_labels,
-                                                                   phase:True, keep_prob:0.5})
+                                                                   phase:True, keep_prob:0.3})
             duration = time.time() - start_time
             # print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
 
             # Print the cost every epoch
-            if epoch % 1 == 0:
+            if epoch % 100 == 0:
                 # print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
                 correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(Y, 1))
                 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-                print ("train loss:%.8f Train Accuracy:"%(loss_value), accuracy.eval({X: train_data, Y: train_labels,
-                                                                                      phase:True, keep_prob:1}))
+                # print ("train loss:%.8f Train Accuracy:"%(loss_value), accuracy.eval({X: train_data, Y: train_labels,
+                #                                                                       phase:True, keep_prob:1}))
                 loss_value = sess.run(cost, feed_dict={X: test_data, Y: test_labels,
                                                        phase:False, keep_prob:1})
                 print("test loss:%.8f Test Accuracy:"%(loss_value), accuracy.eval({X: test_data, Y: test_labels,
-                                                                                   phase:False, keep_prob:1}))
 
+
+
+                                                                                   phase:False, keep_prob:1}))
 main()
