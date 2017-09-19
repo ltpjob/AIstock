@@ -68,19 +68,22 @@ def dense(x,
                                              scope=scope)
 
 
-def dense_relu(x, size, scope):
+def dense_relu(x, size, keep_prob, scope):
     with tf.variable_scope(scope):
         h1 = dense(x, size, 'dense')
-        return tf.nn.relu(h1, 'relu')
+        h1_drop = tf.nn.dropout(h1, keep_prob)
+        return tf.nn.relu(h1_drop, 'relu')
 
 
-def dense_batch_relu(x, size, phase, scope):
+def dense_batch_relu(x, size, phase, keep_prob, scope):
     with tf.variable_scope(scope):
         h1 = tf.contrib.layers.fully_connected(x, size, activation_fn=None, scope='dense')
-        h2 = tf.contrib.layers.batch_norm(h1,
+        drop = tf.nn.dropout(h1, keep_prob, name="do")
+        h2 = tf.contrib.layers.batch_norm(drop,
                                           center=True, scale=True,
                                           is_training=phase,
                                           scope='bn')
+
         return tf.nn.relu(h2, 'relu')
 
 
@@ -100,13 +103,14 @@ def main():
     data = np.load("data.npy")
     target = np.load("target.npy")
 
-    hidden_size = 2
+    hidden_size = 4
     learning_rate = 0.01
     class_num = 2
-    num_epochs = 25000
-    train_size = 10000
-    test_begin = train_size+6000
-    test_size = 800
+
+    num_epochs = 2500000
+    train_size = 128000
+    test_begin = 250000+16000
+    test_size = 16000
 
     train_data = data[0:train_size, 1:-3]
     test_data = data[test_begin:test_begin+test_size, 1:-3]
@@ -118,6 +122,7 @@ def main():
     X = tf.placeholder(tf.float32, shape=(None, train_data.shape[1]))
     Y = tf.placeholder(tf.int32, shape=(None, class_num))
     phase = tf.placeholder(tf.bool, name='phase')
+    keep_prob = tf.placeholder(tf.float32)
 
     input_layer = X
 
@@ -128,10 +133,10 @@ def main():
     #
     # logits = add_layer(input_layer, input_size, class_num, activation_function=None)
 
-    output_size = int(train_data.shape[1]*2)
+    output_size = int(train_data.shape[1])
     print(output_size)
     for i in range(hidden_size):
-        input_layer = dense_batch_relu(input_layer, output_size, phase, "layer"+str(i+i))
+        input_layer = dense_batch_relu(input_layer, output_size, phase, keep_prob, "layer"+str(i+i))
 
     logits = dense(input_layer, class_num, "layer" + str(i + i))
 
@@ -146,7 +151,8 @@ def main():
 
         for epoch in range(num_epochs):
             start_time = time.time()
-            _, loss_value = sess.run([optimizer, cost], feed_dict={X: train_data, Y: train_labels, phase:True})
+            _, loss_value = sess.run([optimizer, cost], feed_dict={X: train_data, Y: train_labels,
+                                                                   phase:True, keep_prob:0.5})
             duration = time.time() - start_time
             # print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
 
@@ -155,8 +161,11 @@ def main():
                 # print('Step %d: loss = %.8f (%.3f sec)' % (epoch, loss_value, duration))
                 correct_prediction = tf.equal(tf.argmax(logits, 1), tf.argmax(Y, 1))
                 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-                print ("train loss:%.8f Train Accuracy:"%(loss_value), accuracy.eval({X: train_data, Y: train_labels, phase:True}))
-                loss_value = sess.run(cost, feed_dict={X: test_data, Y: test_labels, phase:False})
-                print("test loss:%.8f Test Accuracy:"%(loss_value), accuracy.eval({X: test_data, Y: test_labels, phase:False}))
+                print ("train loss:%.8f Train Accuracy:"%(loss_value), accuracy.eval({X: train_data, Y: train_labels,
+                                                                                      phase:True, keep_prob:1}))
+                loss_value = sess.run(cost, feed_dict={X: test_data, Y: test_labels,
+                                                       phase:False, keep_prob:1})
+                print("test loss:%.8f Test Accuracy:"%(loss_value), accuracy.eval({X: test_data, Y: test_labels,
+                                                                                   phase:False, keep_prob:1}))
 
 main()
