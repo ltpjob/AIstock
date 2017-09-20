@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="34ec97b0-d465-45e7-8786-e69fd43ce4e6" name="Default" comment="">
+    <list default="true" readonly="true" id="34ec97b0-d465-45e7-8786-e69fd43ce4e6" name="Default" comment="【mod】0.672">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stock.py" afterPath="$PROJECT_DIR$/stock.py" />
     </list>
@@ -19,11 +19,21 @@
           <file leaf-file-name="stock.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/stock.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="512">
-                  <caret line="155" column="30" lean-forward="true" selection-start-line="155" selection-start-column="30" selection-end-line="155" selection-end-column="30" />
+                <state relative-caret-position="515">
+                  <caret line="225" column="70" lean-forward="true" selection-start-line="225" selection-start-column="70" selection-end-line="225" selection-end-column="70" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="math_ops.py" pinned="false" current-in-tab="false">
+            <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/math_ops.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="207">
+                  <caret line="191" column="4" lean-forward="false" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="4" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -145,6 +155,7 @@
       <find>batchnorm</find>
       <find>update_ema</find>
       <find>layer</find>
+      <find>batch_norm</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -193,7 +204,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -329,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1505811643837</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="【mod】0.672">
+      <created>1505831633707</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1505831633707</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -342,17 +360,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.104531005" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.104477614" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.4964229" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3107527" sideWeight="0.5119237" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19784947" sideWeight="0.5588235" order="2" side_tool="false" content_ui="tabs" x="299" y="391" width="1322" height="267" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27741936" sideWeight="0.5588235" order="2" side_tool="false" content_ui="tabs" x="299" y="391" width="1322" height="267" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.49244833" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21827957" sideWeight="0.56359303" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21804512" sideWeight="0.51073134" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2172043" sideWeight="0.51073134" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3107527" sideWeight="0.4880763" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50596184" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="465" y="184" width="1629" height="681" />
@@ -361,6 +379,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -369,7 +388,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="【mod】看着还行。" />
-    <option name="LAST_COMMIT_MESSAGE" value="【mod】看着还行。" />
+    <MESSAGE value="【mod】0.672" />
+    <option name="LAST_COMMIT_MESSAGE" value="【mod】0.672" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -389,6 +409,11 @@
           <line>139</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock.py</url>
+          <line>250</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -397,7 +422,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="46" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -406,14 +431,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/Program Files/Python36/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7130">
-          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/nn_ops.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38318">
@@ -739,16 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/fully_connected_feed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="248" column="43" lean-forward="false" selection-start-line="248" selection-start-column="38" selection-end-line="248" selection-end-column="43" />
-          <folding>
-            <element signature="e#760#798#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils.py" />
     <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/variables.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -790,10 +797,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/fully_connected_feed.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="248" column="43" lean-forward="false" selection-start-line="248" selection-start-column="38" selection-end-line="248" selection-end-column="43" />
+          <folding>
+            <element signature="e#760#798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/math_ops.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="191" column="4" lean-forward="false" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stock.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="155" column="30" lean-forward="true" selection-start-line="155" selection-start-column="30" selection-end-line="155" selection-end-column="30" />
+        <state relative-caret-position="515">
+          <caret line="225" column="70" lean-forward="true" selection-start-line="225" selection-start-column="70" selection-end-line="225" selection-end-column="70" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
