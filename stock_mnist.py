@@ -2,7 +2,10 @@ import tensorflow as tf
 import csv
 import numpy as np
 from tensorflow.python.platform import gfile
+import time
 import math
+import argparse
+from tensorflow.examples.tutorials.mnist import input_data
 
 AIC_PATH = r"D:/project/AIchallenger/data/20170916/ai_challenger_stock_train_20170916/"
 AIC_TRAINING = AIC_PATH + "stock_train_data_20170916.csv"
@@ -163,7 +166,6 @@ def data_get_group(data, target, group, split):
            "test_labels": test_labels}
     return data_set
 
-
 def random_mini_batches(X, Y, mini_batch_size=64, seed=None):
     """
     Creates a list of random minibatches from (X, Y)
@@ -215,13 +217,37 @@ def main():
     target = np.load("target.npy")
 
     hidden_size = 2
-    learning_rate = 0.1
-    dropout_keep = 0.2
+    learning_rate = 0.4
+    dropout_keep = 1
 
     num_epochs = 2500000
+    # train_size = 200000
+    # test_begin = 250000+16000
+    # test_size = 20000
+    #
+    # train_data = data[0:train_size, 1:-3]
+    # test_data = data[test_begin:test_begin+test_size, 1:-3]
+    # train_target = target[0:train_size]
+    # test_target = target[test_begin:test_begin+test_size]
+    # train_labels = one_hot_matrix(train_target, C=class_num)
+    # test_labels = one_hot_matrix(test_target, C=class_num)
+    # print(train_data.shape, train_labels.shape)
 
     # data_set = data_get_whatever(data, target)
-    data_set = data_get_group(data, target, 2, 15)
+    data_set = data_get_group(data, target, 1, 19)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--data_dir', type=str, default='/tmp/tensorflow/mnist/input_data',
+                        help='Directory for storing input data')
+    FLAGS, unparsed = parser.parse_known_args()
+    mnist = input_data.read_data_sets(FLAGS.data_dir, one_hot=True)
+    print(mnist.train.images.shape, mnist.train.labels.shape)
+    print(mnist.test.images.shape, mnist.test.labels.shape)
+
+    data_set = {"train_data":mnist.train.images,
+           "train_labels": mnist.train.labels,
+           "test_data": mnist.test.images,
+           "test_labels": mnist.test.labels}
 
     train_data = data_set["train_data"]
     train_labels = data_set["train_labels"]
@@ -234,6 +260,13 @@ def main():
     keep_prob = tf.placeholder(tf.float32)
 
     input_layer = X
+
+    # input_size = train_data.shape[1]
+    # output_size = train_data.shape[1]
+    # for i in range(hidden_size):
+    #     input_layer = add_layer(input_layer, input_size, output_size, activation_function=tf.nn.relu)
+    #
+    # logits = add_layer(input_layer, input_size, class_num, activation_function=None)
 
     output_size = int(train_data.shape[1])
     print(output_size)
@@ -265,7 +298,8 @@ def main():
             for minibatch in minibatches:
                 _, loss_value = sess.run([optimizer, cost], feed_dict={X: minibatch[0], Y: minibatch[1],
                                                                        phase:False, keep_prob:dropout_keep})
-                # Print the cost every epoch
+
+            # Print the cost every epoch
             if epoch % 1 == 0:
                 train_result, loss_train = sess.run([merged, cost], feed_dict={X: train_data, Y: train_labels, phase: False, keep_prob: 1})
                 acc_train = accuracy.eval({X: train_data, Y: train_labels, phase:False, keep_prob:1})
