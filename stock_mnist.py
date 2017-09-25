@@ -72,12 +72,12 @@ def dense(x,
                                                activation_fn=None,
                                                scope='dense')
 
-        up = tf.contrib.layers.batch_norm(up,
-                                      center=True, scale=True,
-                                      is_training=phase,
-                                      scope='bn')
+        # up = tf.contrib.layers.batch_norm(up,
+        #                               center=True, scale=True,
+        #                               is_training=phase,
+        #                               scope='bn')
 
-        up = tf.nn.dropout(up, keep_prob, name="do")
+        # up = tf.nn.dropout(up, keep_prob, name="do")
 
     return up
 
@@ -93,12 +93,12 @@ def dense_batch_relu(x, size, phase, keep_prob, scope):
     with tf.variable_scope(scope):
         up = tf.contrib.layers.fully_connected(x, size, activation_fn=None, scope='dense')
 
-        up = tf.contrib.layers.batch_norm(up,
-                                          center=True, scale=True,
-                                          is_training=phase,
-                                          scope='bn')
+        # up = tf.contrib.layers.batch_norm(up,
+        #                                   center=True, scale=True,
+        #                                   is_training=phase,
+        #                                   scope='bn')
 
-        up = tf.nn.dropout(up, keep_prob, name="do")
+        # up = tf.nn.dropout(up, keep_prob, name="do")
 
         return tf.nn.relu(up, 'relu')
 
@@ -216,8 +216,8 @@ def main():
     data = np.load("data.npy")
     target = np.load("target.npy")
 
-    hidden_size = 2
-    learning_rate = 0.4
+    hidden_size = 20
+    learning_rate = 0.1
     dropout_keep = 1
 
     num_epochs = 2500000
@@ -292,7 +292,13 @@ def main():
         train_writer = tf.summary.FileWriter("logs/train_%d_%f_%f"%(hidden_size, learning_rate, dropout_keep), sess.graph)
         test_writer = tf.summary.FileWriter("logs/test_%d_%f_%f"%(hidden_size, learning_rate, dropout_keep), sess.graph)
 
+        train_data = train_data[0:10000, :]
+        train_labels = train_labels[0:10000, :]
+
         for epoch in range(num_epochs):
+            # _, loss_value = sess.run([optimizer, cost], feed_dict={X: train_data, Y: train_labels,
+            #                                                        phase: False, keep_prob: dropout_keep})
+
             minibatches = random_mini_batches(train_data, train_labels, 100)
 
             for minibatch in minibatches:

@@ -134,11 +134,7 @@ def data_get_whatever(data, target):
 
 
 def data_get_group(data, target, group, split):
-
-    class_num = 2
-
-    target = one_hot_matrix(target, C=class_num)
-
+    target = target.reshape(-1, 1)
     group_index = np.where(data[:, 90] == group)
     group_data = data[group_index]
     group_lables = target[group_index]
@@ -216,7 +212,7 @@ def main():
 
     hidden_size = 2
     learning_rate = 0.1
-    dropout_keep = 0.2
+    dropout_keep = 0.5
 
     num_epochs = 2500000
 
@@ -229,7 +225,7 @@ def main():
     test_labels = data_set["test_labels"]
 
     X = tf.placeholder(tf.float32, shape=(None, train_data.shape[1]), name="X")
-    Y = tf.placeholder(tf.int32, shape=(None, train_labels.shape[1]), name='Y')
+    Y = tf.placeholder(tf.float32, shape=(None, train_labels.shape[1]), name='Y')
     phase = tf.placeholder(tf.bool, name='phase')
     keep_prob = tf.placeholder(tf.float32)
 
@@ -242,7 +238,7 @@ def main():
 
     logits = dense(input_layer, train_labels.shape[1], phase, keep_prob, "layer_final")
 
-    cross_entropy = tf.nn.softmax_cross_entropy_with_logits(labels=Y, logits=logits, name='xentropy')
+    cross_entropy = tf.nn.sigmoid_cross_entropy_with_logits(labels=Y, logits=logits, name='xentropy')
     cost = tf.reduce_mean(cross_entropy, name='xentropy_mean')
     tf.summary.scalar('loss', cost)
     optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(cost)
@@ -256,14 +252,14 @@ def main():
     with tf.Session() as sess:
         sess.run(init)
         merged = tf.summary.merge_all()
-        train_writer = tf.summary.FileWriter("logs/train_%d_%f_%f"%(hidden_size, learning_rate, dropout_keep), sess.graph)
-        test_writer = tf.summary.FileWriter("logs/test_%d_%f_%f"%(hidden_size, learning_rate, dropout_keep), sess.graph)
+        train_writer = tf.summary.FileWriter("logs/train_sigmoid_%d_%f_%f"%(hidden_size, learning_rate, dropout_keep), sess.graph)
+        test_writer = tf.summary.FileWriter("logs/test_sigmoid_%d_%f_%f"%(hidden_size, learning_rate, dropout_keep), sess.graph)
 
         for epoch in range(num_epochs):
             minibatches = random_mini_batches(train_data, train_labels, 100)
 
             for minibatch in minibatches:
-                _, loss_value = sess.run([optimizer, cost], feed_dict={X: minibatch[0], Y: minibatch[1],
+                _ = sess.run([optimizer], feed_dict={X: minibatch[0], Y: minibatch[1],
                                                                        phase:False, keep_prob:dropout_keep})
                 # Print the cost every epoch
             if epoch % 1 == 0:
