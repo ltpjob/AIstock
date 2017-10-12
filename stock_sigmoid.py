@@ -206,7 +206,7 @@ def random_mini_batches(X, Y, mini_batch_size=64, seed=None):
 
 
 def main():
-    # data_save()
+    data_save()
     data = np.load("data.npy")
     target = np.load("target.npy")
 

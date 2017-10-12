@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="34ec97b0-d465-45e7-8786-e69fd43ce4e6" name="Default" comment="【mod】加入mini-batch，和现有模型测试mnist数据集。">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stock_result.py" />
+    <list default="true" readonly="true" id="34ec97b0-d465-45e7-8786-e69fd43ce4e6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stock_fix_weight.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/stock.iml" afterPath="$PROJECT_DIR$/.idea/stock.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stock.py" afterPath="$PROJECT_DIR$/stock.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stock_mnist.py" afterPath="$PROJECT_DIR$/stock_mnist.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stock_result.py" afterPath="$PROJECT_DIR$/stock_result.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stock_sigmoid.py" afterPath="$PROJECT_DIR$/stock_sigmoid.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="stock.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stock.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2168">
-              <caret line="329" column="70" lean-forward="true" selection-start-line="329" selection-start-column="70" selection-end-line="329" selection-end-column="70" />
+            <state relative-caret-position="852">
+              <caret line="488" column="57" lean-forward="true" selection-start-line="488" selection-start-column="57" selection-end-line="488" selection-end-column="57" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -30,11 +31,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="stock_fix_weight.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stock_fix_weight.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="stock_result.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_result.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state relative-caret-position="641">
+              <caret line="81" column="33" lean-forward="false" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -53,11 +64,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>placeh</find>
-      <find>placeholder_inputs</find>
-      <find>evaluation</find>
-      <find>images_placeholder</find>
-      <find>training</find>
       <find>reduce_mean</find>
       <find>loss</find>
       <find>placeholder</find>
@@ -75,14 +81,19 @@
       <find>update_ema</find>
       <find>layer</find>
       <find>batch_norm</find>
-      <find>one_hot_matrix</find>
       <find>mnist.train</find>
       <find>sigmoid</find>
       <find>dropout</find>
       <find>data_get_split</find>
       <find>GradientDescentOptimizer</find>
-      <find>data_save</find>
       <find>where</find>
+      <find>sum</find>
+      <find>dense_relu</find>
+      <find>dense_batch_tanh</find>
+      <find>type</find>
+      <find>data_save</find>
+      <find>data_save_test</find>
+      <find>one_hot_matrix</find>
     </findStrings>
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -95,17 +106,18 @@
         <option value="D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/mnist.py" />
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/stock_sigoid.py" />
-        <option value="$PROJECT_DIR$/stock_sigmoid.py" />
         <option value="$PROJECT_DIR$/stock_mnist.py" />
         <option value="$PROJECT_DIR$/data.pkl" />
-        <option value="$PROJECT_DIR$/stock.py" />
+        <option value="D:/机器学习/唐宇迪-机器学习课程/3个python库代码数据/numpy/numpy_1.ipynb" />
+        <option value="$PROJECT_DIR$/stock_sigmoid.py" />
         <option value="$PROJECT_DIR$/stock_result.py" />
+        <option value="$PROJECT_DIR$/stock.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="173" />
-    <option name="y" value="198" />
+    <option name="x" value="57" />
+    <option name="y" value="175" />
     <option name="width" value="1342" />
     <option name="height" value="795" />
   </component>
@@ -124,6 +136,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -135,12 +149,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -177,19 +189,19 @@
       <option name="ipnbHost" value="127.0.0.1" />
       <option name="ipnbPort" value="8888" />
     </configuration>
-    <configuration name="mnist" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="codecs" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist" />
+      <option name="WORKING_DIRECTORY" value="D:/Program Files/Python36/Lib" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="stock" />
-      <option name="SCRIPT_NAME" value="D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/mnist.py" />
+      <option name="SCRIPT_NAME" value="D:/Program Files/Python36/Lib/codecs.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -264,18 +276,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.stock" />
-      <item index="1" class="java.lang.String" itemvalue="Python.mnist" />
-      <item index="2" class="java.lang.String" itemvalue="Python.stock_mnist" />
-      <item index="3" class="java.lang.String" itemvalue="Python.stock_sigmoid" />
-      <item index="4" class="java.lang.String" itemvalue="Python.stock_result" />
+      <item index="1" class="java.lang.String" itemvalue="Python.stock_mnist" />
+      <item index="2" class="java.lang.String" itemvalue="Python.stock_sigmoid" />
+      <item index="3" class="java.lang.String" itemvalue="Python.stock_result" />
+      <item index="4" class="java.lang.String" itemvalue="Python.codecs" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.stock_result" />
-        <item index="1" class="java.lang.String" itemvalue="Python.stock" />
-        <item index="2" class="java.lang.String" itemvalue="Python.stock_mnist" />
+        <item index="0" class="java.lang.String" itemvalue="Python.stock" />
+        <item index="1" class="java.lang.String" itemvalue="Python.stock_result" />
+        <item index="2" class="java.lang.String" itemvalue="Python.codecs" />
         <item index="3" class="java.lang.String" itemvalue="Python.stock_sigmoid" />
-        <item index="4" class="java.lang.String" itemvalue="Python.mnist" />
+        <item index="4" class="java.lang.String" itemvalue="Python.stock_mnist" />
       </list>
     </recent_temporary>
   </component>
@@ -333,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1505885600803</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="【mod】修改了训练方式，增加了保存和读取模型的功能。">
+      <created>1506350450123</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1506350450123</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -346,20 +365,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.112877585" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.4964229" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2139785" sideWeight="0.47774243" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2139785" sideWeight="0.52225757" order="2" side_tool="false" content_ui="tabs" x="299" y="391" width="1322" height="267" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2451613" sideWeight="0.48827294" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21505377" sideWeight="0.54850745" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38494623" sideWeight="0.4872814" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2580645" sideWeight="0.45310014" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39864865" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="465" y="184" width="1629" height="681" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.122068234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12688172" sideWeight="0.49483308" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3236559" sideWeight="0.5506396" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27419356" sideWeight="0.5600159" order="2" side_tool="false" content_ui="tabs" x="299" y="391" width="1322" height="267" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2451613" sideWeight="0.4852941" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19032258" sideWeight="0.50319827" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1263911" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27204302" sideWeight="0.47972974" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16774194" sideWeight="0.44936034" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2739872" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="465" y="184" width="1629" height="681" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -377,7 +396,9 @@
     <MESSAGE value="【mod】0.672" />
     <MESSAGE value="【mod】summary+softmax" />
     <MESSAGE value="【mod】加入mini-batch，和现有模型测试mnist数据集。" />
-    <option name="LAST_COMMIT_MESSAGE" value="【mod】加入mini-batch，和现有模型测试mnist数据集。" />
+    <MESSAGE value="【mod】修改了训练方式，增加了保存和读取模型的功能。" />
+    <MESSAGE value="【mod】loss &gt; 0.69+" />
+    <option name="LAST_COMMIT_MESSAGE" value="【mod】loss &gt; 0.69+" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -409,28 +430,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/stock.py</url>
-          <line>415</line>
+          <line>479</line>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock.py</url>
-          <line>442</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock.py</url>
-          <line>443</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/stock_result.py</url>
-          <line>87</line>
+          <line>101</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/stock_result.py</url>
-          <line>83</line>
+          <line>97</line>
           <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock_sigmoid.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock.py</url>
+          <line>450</line>
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -440,7 +466,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="69" />
+      <option name="time" value="85" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -451,108 +477,7 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/nn_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38318">
-          <caret line="1685" column="0" lean-forward="false" selection-start-line="1685" selection-start-column="0" selection-end-line="1685" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/fully_connected_feed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4738">
-          <caret line="206" column="35" lean-forward="true" selection-start-line="206" selection-start-column="35" selection-end-line="206" selection-end-column="35" />
-          <folding>
-            <element signature="e#760#798#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3289">
-          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1587">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/fully_connected_feed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#760#798#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2185">
-          <caret line="101" column="12" lean-forward="false" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1587">
-          <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/fully_connected_feed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#760#798#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2185">
-          <caret line="101" column="12" lean-forward="false" selection-start-line="101" selection-start-column="4" selection-end-line="101" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/830134243/numpy/core/multiarray.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110906">
-          <caret line="4822" column="72" lean-forward="false" selection-start-line="4822" selection-start-column="65" selection-end-line="4822" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/csv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/csv.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/830134243/_collections.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -561,13 +486,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/iris_read_csv_DNN.txt" />
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/platform/gfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/platform/gfile.py" />
     <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/830134243/numpy/core/multiarray.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -575,94 +494,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/io_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6061">
-          <caret line="171" column="6" lean-forward="false" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/pywrap_tensorflow_internal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28681">
-          <caret line="1247" column="0" lean-forward="false" selection-start-line="1247" selection-start-column="0" selection-end-line="1247" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/__init__.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/io_ops.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/pywrap_tensorflow_internal.py" />
     <entry file="file://$PROJECT_DIR$/iris_nn.py" />
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="304" column="74" lean-forward="true" selection-start-line="304" selection-start-column="74" selection-end-line="304" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/training/gradient_descent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/numpy/lib/npyio.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/training/gradient_descent.py" />
     <entry file="file://$PROJECT_DIR$/Tensorflow+Tutorial.ipynb" />
     <entry file="file://$PROJECT_DIR$/utils.py" />
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/variables.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2415">
-          <caret line="121" column="6" lean-forward="false" selection-start-line="121" selection-start-column="6" selection-end-line="121" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/variable_scope.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23621">
-          <caret line="1047" column="4" lean-forward="false" selection-start-line="1047" selection-start-column="4" selection-end-line="1047" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/random_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1472">
-          <caret line="78" column="13" lean-forward="false" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/summary/writer/writer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="96" column="6" lean-forward="false" selection-start-line="96" selection-start-column="6" selection-end-line="96" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/collections/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="358" column="4" lean-forward="false" selection-start-line="358" selection-start-column="4" selection-end-line="358" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/contrib/learn/python/learn/datasets/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/variables.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/variable_scope.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/random_ops.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/summary/writer/writer.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/collections/__init__.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/contrib/learn/python/learn/datasets/base.py" />
     <entry file="file://$PROJECT_DIR$/../../tensorflow-mnist-tutorial.git/trunk/mnist_2.0_five_layers_sigmoid.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2944">
@@ -670,82 +515,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/math_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3726">
-          <caret line="191" column="4" lean-forward="false" selection-start-line="191" selection-start-column="4" selection-end-line="191" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/genericpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/inspect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16376">
-          <caret line="730" column="0" lean-forward="false" selection-start-line="730" selection-start-column="0" selection-end-line="730" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stock_sigmoid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="222" column="43" lean-forward="true" selection-start-line="222" selection-start-column="43" selection-end-line="222" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4577">
-          <caret line="210" column="4" lean-forward="false" selection-start-line="210" selection-start-column="4" selection-end-line="210" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/fully_connected_feed.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="147" column="15" lean-forward="false" selection-start-line="147" selection-start-column="15" selection-end-line="147" selection-end-column="15" />
-          <folding>
-            <element signature="e#760#798#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/input_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="834">
-          <caret line="135" column="54" lean-forward="false" selection-start-line="135" selection-start-column="54" selection-end-line="135" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/gen_nn_ops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52095">
-          <caret line="2274" column="48" lean-forward="false" selection-start-line="2274" selection-start-column="48" selection-end-line="2274" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stock_mnist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="102" column="37" lean-forward="false" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/math_ops.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/genericpath.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/inspect.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/fully_connected_feed.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/input_data.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/mnist.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/gen_nn_ops.py" />
     <entry file="file://$PROJECT_DIR$/../../tensorflow-mnist-tutorial.git/trunk/mnist_2.2_five_layers_relu_lrdecay_dropout.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1541">
@@ -774,47 +551,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/nn_ops.py">
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/ops/nn_ops.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/examples/tutorials/mnist/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/stock_mnist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="1516" column="4" lean-forward="false" selection-start-line="1516" selection-start-column="4" selection-end-line="1516" selection-end-column="4" />
+        <state relative-caret-position="-2599">
+          <caret line="7" column="37" lean-forward="false" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/training/saver.py">
+    <entry file="file://$PROJECT_DIR$/result.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="1117" column="71" lean-forward="false" selection-start-line="1117" selection-start-column="71" selection-end-line="1117" selection-end-column="71" />
-          <folding />
+        <state relative-caret-position="-9798">
+          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/Program Files/Python36/Lib/codecs.py">
+    <entry file="file://$PROJECT_DIR$/data_do_0.pkl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/tensorflow/python/training/saver.py" />
+    <entry file="file://D:/机器学习/唐宇迪-机器学习课程/3个python库代码数据/numpy/numpy_1.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/numpy/core/numeric.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/codecs.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/pandas/io/parsers.py" />
+    <entry file="file://D:/Program Files/Python36/Lib/site-packages/pandas/core/generic.py" />
     <entry file="file://$PROJECT_DIR$/stock_result.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state relative-caret-position="641">
+          <caret line="81" column="33" lean-forward="false" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/site-packages/sklearn/model_selection/_search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="763" column="6" lean-forward="false" selection-start-line="763" selection-start-column="6" selection-end-line="763" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/site-packages/sklearn/model_selection/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#38#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_sigmoid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2972">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/site-packages/sklearn/ensemble/forest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="969" column="8" lean-forward="false" selection-start-line="969" selection-start-column="8" selection-end-line="969" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/ProgramData/Anaconda3/Lib/site-packages/sklearn/grid_search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="626" column="6" lean-forward="false" selection-start-line="626" selection-start-column="6" selection-end-line="626" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stock.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2168">
-          <caret line="329" column="70" lean-forward="true" selection-start-line="329" selection-start-column="70" selection-end-line="329" selection-end-column="70" />
+        <state relative-caret-position="852">
+          <caret line="488" column="57" lean-forward="true" selection-start-line="488" selection-start-column="57" selection-end-line="488" selection-end-column="57" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_fix_weight.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

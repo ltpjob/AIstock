@@ -3,11 +3,14 @@ import csv
 import numpy as np
 from tensorflow.python.platform import gfile
 import math
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
 import pickle
 import matplotlib.pyplot as plt
 
-AIC_PATH = r"D:/project/AIchallenger/data/20170923/ai_challenger_stock_train_20170923/"
-AIC_TRAINING = AIC_PATH + "stock_train_data_20170923.csv"
+AIC_PATH = r"D:/project/AIchallenger/data/20171006/ai_challenger_stock_train_20171006/"
+AIC_TRAINING = AIC_PATH + "stock_train_data_20171006.csv"
 
 print(AIC_TRAINING)
 
@@ -36,8 +39,21 @@ def stack_csv_load(filename,
     return {"data":data, "target":target}
 
 
+def stack_csv_load_pd(filename,
+                   target_dtype,
+                   features_dtype,
+                   target_column=-1):
+
+    data_stock = pd.read_csv(filename)
+    data_stock = data_stock.dropna(axis=1)
+    data = data_stock.drop("label", axis=1).values.astype(features_dtype)
+    target = data_stock.loc[:, "label"].values.astype(target_dtype)
+    return {"data": data, "target": target}
+
+
+
 def data_save():
-    training_set = stack_csv_load(filename=AIC_TRAINING,
+    training_set = stack_csv_load_pd(filename=AIC_TRAINING,
                                   target_dtype=np.int32,
                                   features_dtype=np.float32,
                                   target_column=-3)
@@ -102,6 +118,17 @@ def dense_batch_relu(x, size, phase, keep_prob, scope):
         return up
 
 
+def dense_batch_tanh(x, size, phase, keep_prob, scope):
+    with tf.variable_scope(scope):
+
+        up = tf.contrib.layers.fully_connected(x, size, activation_fn=None, scope='dense')
+        up = tf.contrib.layers.batch_norm(up, center=True, scale=True, is_training=phase, scope='bn')
+        up = tf.nn.tanh(up, 'tanh')
+        up = tf.nn.dropout(up, keep_prob, name="do")
+
+        return up
+
+
 def one_hot_matrix(labels, C):
     with tf.Session() as sess:
         C = tf.constant(C, name="C")
@@ -139,15 +166,15 @@ def data_get_split(data, target, split):
 
     target = one_hot_matrix(target, C=class_num)
 
-    split_train_index = np.where(data[:, 91] < split)
-    split_test_index = np.where(data[:, 91] >= split)
+    split_train_index = np.where(data[:, -1] < split)
+    split_test_index = np.where(data[:, -1] >= split)
 
     train_data =data[split_train_index]
-    train_data = train_data[:, 1:89]
+    train_data = train_data[:, 1:-3]
     train_labels = target[split_train_index]
 
     test_data = data[split_test_index]
-    test_data = test_data[:, 1:89]
+    test_data = test_data[:, 1:-3]
     test_labels = target[split_test_index]
 
     print(train_data.shape, train_labels.shape)
@@ -166,19 +193,19 @@ def data_get_group(data, target, group, split):
 
     target = one_hot_matrix(target, C=class_num)
 
-    group_index = np.where(data[:, 90] == group)
+    group_index = np.where(data[:, -2] == group)
     group_data = data[group_index]
     group_lables = target[group_index]
 
-    group_train_index = np.where(group_data[:, 91] < split)
-    group_test_index = np.where(group_data[:, 91] >= split)
+    group_train_index = np.where(group_data[:, -1] < split)
+    group_test_index = np.where(group_data[:, -1] >= split)
 
     train_data =group_data[group_train_index]
-    train_data = train_data[:, 1:89]
+    train_data = train_data[:, 1:-3]
     train_labels = group_lables[group_train_index]
 
     test_data = group_data[group_test_index]
-    test_data = test_data[:, 1:89]
+    test_data = test_data[:, 1:-3]
     test_labels = group_lables[group_test_index]
 
     print(train_data.shape, train_labels.shape)
@@ -317,7 +344,7 @@ def main():
                     break
 
 
-def train_set(data_set, hidden_size=2, learning_rate=0.1, early_stop_ratio=0.04,
+def train_set_nn(data_set, hidden_size=2, learning_rate=0.1, early_stop_ratio=0.04,
               mini_batch_size=100, dropout_keep=1.0, num_epochs=8000, logdir="logs", name=None):
 
     train_data = data_set["train_data"]
@@ -374,12 +401,14 @@ def train_set(data_set, hidden_size=2, learning_rate=0.1, early_stop_ratio=0.04,
 
             for minibatch in minibatches:
                 sess.run(optimizer, feed_dict={X: minibatch[0], Y: minibatch[1],
-                                                                       phase:False, keep_prob:dropout_keep})
+                                               phase: False, keep_prob: dropout_keep})
                 # Print the cost every epoch
             if epoch % 1 == 0:
-                train_result, loss_train = sess.run([merged, cost], feed_dict={X: train_data, Y: train_labels, phase: False, keep_prob: 1})
-                acc_train = accuracy.eval({X: train_data, Y: train_labels, phase:False, keep_prob:1})
-                test_result, loss_test = sess.run([merged, cost], feed_dict={X: test_data, Y: test_labels, phase:False, keep_prob:1})
+                train_result, loss_train = sess.run([merged, cost],
+                                                    feed_dict={X: train_data, Y: train_labels, phase: False, keep_prob: 1})
+                acc_train = accuracy.eval({X: train_data, Y: train_labels, phase: False, keep_prob: 1})
+                test_result, loss_test = sess.run([merged, cost],
+                                                  feed_dict={X: test_data, Y: test_labels, phase: False, keep_prob: 1})
                 acc_test = accuracy.eval({X: test_data, Y: test_labels, phase: False, keep_prob: 1})
                 print("Test loss:%.8f Test Accuracy:%.8f  |  Train loss:%.8f Train Accuracy:%.8f  epoch:%d"
                       %(loss_test, acc_test, loss_train, acc_train, epoch))
@@ -388,13 +417,44 @@ def train_set(data_set, hidden_size=2, learning_rate=0.1, early_stop_ratio=0.04,
 
                 if min_loss is None or loss_test < min_loss:
                     min_loss = loss_test
-                    saver.save(sess, "ckpt/%s_train_hs%d_lr%.5f_mb%d_dk%.2f_os%d" %(name, hidden_size, learning_rate, mini_batch_size, dropout_keep, output_size), global_step=epoch)
+                    saver.save(sess, "ckpt/%s_train_hs%d_lr%.5f_mb%d_dk%.2f_os%d" %(name, hidden_size, learning_rate, mini_batch_size, dropout_keep, output_size), global_step=None)
 
-                if loss_test > (1+early_stop_ratio)*min_loss and epoch > 20:
+                if loss_test > (1+early_stop_ratio)*min_loss and epoch > 30:
                     print("early stop!", min_loss, loss_test)
                     break
 
     return min_loss
+
+
+def train_set_rf(data_set):
+
+    train_data = data_set["train_data"]
+    train_labels = data_set["train_labels"]
+    train_labels = np.argmax(train_labels, axis=1)
+    test_data = data_set["test_data"]
+    test_labels = data_set["test_labels"]
+    test_labels = np.argmax(test_labels, axis = 1)
+
+    param_test1 = {'n_estimators': range(10, 30, 5),
+                   }
+
+    clf = RandomForestClassifier(n_estimators=300, min_samples_split=100,
+                                 min_samples_leaf=20, max_depth=8, max_features='sqrt', n_jobs=7)
+
+    # gsearch1 = GridSearchCV(clf, param_grid = param_test1)
+
+    # gsearch1.fit(train_data, train_labels)
+
+    clf = clf.fit(train_data, train_labels)
+    # r = clf.score(test_data, test_labels)
+    res = clf.predict_proba(test_data)
+    print(res[:, 1])
+    # print(gsearch1.grid_scores_)
+
+    # clf = gsearch1.fit(train_data, train_labels)
+    # r = clf.score(test_data, test_labels)
+
+    # print(r)
 
 
 def test():
@@ -403,11 +463,15 @@ def test():
     data = np.load("data.npy")
     target = np.load("target.npy")
 
-    data_set = data_get_split(data, target, 19)
-    # data_set = data_get_group(data, target, 3, 15)
+    # data_set = data_get_split(data, target, 16)
+    data_set = data_get_group(data, target, 5, 16)
 
-    min_test_loss = train_set(data_set, hidden_size=2, early_stop_ratio=0.001, mini_batch_size=3000,
-                              learning_rate=0.00001, num_epochs=8000, dropout_keep=0.35, logdir='log_2', name="ALL")
+    min_test_loss = train_set_nn(data_set, hidden_size=2, early_stop_ratio=0.001, mini_batch_size=3000,
+                              learning_rate=0.000008, num_epochs=8000, dropout_keep=0.08, logdir='log_2', name="ALL")
+
+    # train_set_rf(data_set)
+
+
 
     # rg = range(10)
     # for i in rg:
@@ -445,5 +509,24 @@ def test():
     #     plt.plot(list(data.keys()), list(data.values()))
     # plt.show()
 
+    # rg = range(5)
+    # for i in rg:
+    #     lr_dic = {}
+    #     for step in np.arange(100):
+    #         r = -2*np.random.rand()-2
+    #         learning_rate = 10**r
+    #         min_test_loss = train_set(data_set, hidden_size=2, early_stop_ratio=0.001, mini_batch_size=3000,
+    #                                   learning_rate=learning_rate, num_epochs=8000, dropout_keep=0.35, logdir='log_2', name="ALL")
+    #         lr_dic[learning_rate] = min_test_loss
+    #     output = open('data_lr_%d.pkl' % (i, ), 'wb')
+    #     pickle.dump(lr_dic, output)
+    #     output.close()
+    #
+    # plt.figure('data')
+    # for i in rg:
+    #     pkl_file = open('data_lr_%d.pkl' % (i, ), 'rb')
+    #     data = pickle.load(pkl_file)
+    #     plt.plot(list(data.keys()), list(data.values()))
+    # plt.show()
 
 test()
